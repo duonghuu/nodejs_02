@@ -11,9 +11,12 @@ const connection = require('./config/database')
 connection.query(
   'SELECT * FROM `users` ',
   function (err, results, fields) {
-    console.log(results); // results contains rows returned by server
+    // console.log(results); // results contains rows returned by server
   }
 );
+// config req.body
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // config templete engine
 configViewEngine(app)

@@ -30,3 +30,18 @@
     background-color: #04AA6D;
     color: white;
 }
+
+.form-add-new{
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.form-add-new legend{padding: 10px;}
+.form-add-new .form-group{
+    padding: 10px;
+}
+
+.form-add-new .btn{
+    cursor: pointer;
+}

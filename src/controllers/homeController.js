@@ -1,5 +1,5 @@
 const getHomepage = (req, res) => {
-    return res.send("Hello World nodemon!");
+    return res.render("home");
 };
 const getHoiDanIt = (req, res) => {
     return res.render("sample");

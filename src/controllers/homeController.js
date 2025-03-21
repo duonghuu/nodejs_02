@@ -6,8 +6,15 @@ const getHoiDanIt = (req, res) => {
 };
 
 const postCreateUser = (req, res) => {
-    console.log(req.body);
-    res.send("postCreateUser");
+    let {email, name, city} = req.body
+    // A simple SELECT query
+    connection.query(
+        `INSERT INTO users (name, email, city) VALUES (?, ?, ?)`,
+        [name, email, city],
+        function (err, results, fields) {
+            res.send("Create user success");
+        }
+    );
 };
 
 module.exports = {

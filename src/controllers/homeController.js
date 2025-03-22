@@ -5,20 +5,22 @@ const getHoiDanIt = (req, res) => {
     return res.render("sample");
 };
 
-const postCreateUser = (req, res) => {
+const getCreateUser = (req, res) => {
+    return res.render("create");
+};
+
+const postCreateUser = async (req, res) => {
     let {email, name, city} = req.body
-    // A simple SELECT query
-    connection.query(
+    const [results, fields] = await connection.query(
         `INSERT INTO users (name, email, city) VALUES (?, ?, ?)`,
         [name, email, city],
-        function (err, results, fields) {
-            res.send("Create user success");
-        }
     );
+    res.send("Create user success");
 };
 
 module.exports = {
     getHomepage,
     getHoiDanIt,
-    postCreateUser
+    postCreateUser,
+    getCreateUser
 }

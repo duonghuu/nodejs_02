@@ -1,5 +1,9 @@
-const getHomepage = (req, res) => {
-    return res.render("home");
+const { getAllUsers } = require("../services/CRUDService");
+const getHomepage = async (req, res) => {
+    let results = await getAllUsers();
+    return res.render("home", {
+        listUsers: results
+    });
 };
 const getHoiDanIt = (req, res) => {
     return res.render("sample");

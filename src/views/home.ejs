@@ -12,26 +12,26 @@
             <a href="/create">Create new user</a>
         </div>
         <h1 class="title">List user</h1>
-        <%= JSON.stringify(listUsers) %>
         <table id="customers">
             <tr>
                 <th>ID</th>
                 <th>Email</th>
                 <th>Name</th>
                 <th>City</th>
+                <th>Actions</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Berglunds snabbköp</td>
-                <td>Christina Berglund</td>
-                <td>Sweden</td>
-                <td>Sweden</td>
-            </tr>
+            <% listUsers.forEach(function(user) { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.city %></td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+            <% }); %> 
         </table>
     </body>
 </html>

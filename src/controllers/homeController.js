@@ -24,6 +24,7 @@ const postCreateUser = async (req, res) => {
 };
 
 const getUpdateUser = (req, res) => {
+    const userId = req.params.id;
     return res.render("edit");
 };
 

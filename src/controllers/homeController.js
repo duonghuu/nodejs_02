@@ -23,9 +23,14 @@ const postCreateUser = async (req, res) => {
     res.send("Create user success");
 };
 
+const getUpdateUser = (req, res) => {
+    return res.render("edit");
+};
+
 module.exports = {
     getHomepage,
     getHoiDanIt,
     postCreateUser,
-    getCreateUser
+    getCreateUser,
+    getUpdateUser
 }

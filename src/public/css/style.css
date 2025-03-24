@@ -80,3 +80,6 @@
     color: white;
 }
 /* END home list user table */
+.d-none{
+    display: none !important;
+}

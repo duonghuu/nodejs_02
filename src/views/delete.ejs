@@ -12,20 +12,16 @@
             <a href="/create" class="active" >Create new user</a>
         </div>
         <div class="form-add-new">
-            <form action="/create-user" method="POST" >
+            <form action="/delete-user" method="POST" >
                 <fieldset>
-                    <legend>Add user:</legend>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" />
+                    <legend>Delete user:</legend>
+                    <div class="form-group d-none">
+                        <label for="userId">Id:</label>
+                        <input type="text" name="userId" value="<%= userEdit.id %>" />
                     </div>
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" />
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City:</label>
-                        <input type="text" name="city" />
+                        <label for="email">Do you want to delete user with Email:</label>
+                        <input type="text" name="email" value="<%= userEdit.email %>" />
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn" >Save</button>

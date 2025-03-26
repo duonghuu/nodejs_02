@@ -16,10 +16,15 @@ app.use(express.json());
 configViewEngine(app)
 
 // routes config
-app.use('/', webRoutes)
+app.use('/', webRoutes);
 
-connection()
-
-app.listen(port, process.env.HOST_NAME, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+(async () => {
+  try {
+    await connection();
+    app.listen(port, process.env.HOST_NAME, () => {
+      console.log(`Backend zero app listening on port ${port}`)
+    })
+  } catch (error) {
+    console.log(error);
+  }
+})();

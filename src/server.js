@@ -18,6 +18,8 @@ configViewEngine(app)
 // routes config
 app.use('/', webRoutes)
 
+connection()
+
 app.listen(port, process.env.HOST_NAME, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -16,10 +16,18 @@ app.use(express.json());
 configViewEngine(app)
 
 // routes config
-app.use('/', webRoutes)
+app.use('/', webRoutes);
 
-connection()
+(async () => {
+  try {
+    await connection()
+    app.listen(port, process.env.HOST_NAME, () => {
+      console.log(`Backend app listening on port ${port}`)
+    })
+  } catch (error) {
+    console.log('>>> Error connnection to db', error);
+  }
+}
+)()
 
-app.listen(port, process.env.HOST_NAME, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+

@@ -21,17 +21,13 @@ const dbState = [{
 }];
 
 const connection = async () => {
-    try {
-        await mongoose.connect("mongodb://root:123456@localhost:27017/", {
-            useNewUrlParser: true
-        },
-        () => {
-            const state = Number(mongoose.connection.readyState);
-            console.log(dbState.find(f => f.value == state).label, "to db"); // connected to db
-        });
-    } catch (error) {
-        console.log('>>> Error connnection to db', error);
-    }
+    await mongoose.connect("mongodb://root:123456@localhost:27017/", {
+        useNewUrlParser: true
+    },
+    () => {
+        const state = Number(mongoose.connection.readyState);
+        console.log(dbState.find(f => f.value == state).label, "to db"); // connected to db
+    });
 };
 
 module.exports = connection;

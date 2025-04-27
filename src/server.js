@@ -6,8 +6,6 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT
 const connection = require('./config/database');
-const Kitten = require('./models/Kitten');
-
 
 // config req.body
 app.use(express.urlencoded({ extended: true }));
@@ -18,9 +16,6 @@ configViewEngine(app)
 
 // routes config
 app.use('/', webRoutes);
-
-const silence = new Kitten({ name: 'Test meow' });
-silence.save().then(() => console.log('meow'));
 
 (async () => {
   try {

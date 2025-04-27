@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT
 const connection = require('./config/database');
-const mongoose = require('mongoose');
+const Kitten = require('./models/Kitten');
 
 
 // config req.body
@@ -19,11 +19,7 @@ configViewEngine(app)
 // routes config
 app.use('/', webRoutes);
 
-const kittySchema = new mongoose.Schema({
-  name: String
-});
-const Kitten = mongoose.model('Kitten', kittySchema);
-const silence = new Kitten({ name: 'Silence 1111' });
+const silence = new Kitten({ name: 'Test meow' });
 silence.save().then(() => console.log('meow'));
 
 (async () => {

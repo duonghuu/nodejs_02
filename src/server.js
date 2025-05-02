@@ -7,6 +7,10 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT
 const connection = require('./config/database');
+const fileUpload = require('express-fileupload');
+
+// default options
+app.use(fileUpload());
 
 // config req.body
 app.use(express.urlencoded({ extended: true }));

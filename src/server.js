@@ -1,6 +1,7 @@
 const express = require('express')
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web');
+const apiRoutes = require('./routes/api');
 require('dotenv').config()
 
 const app = express()
@@ -16,6 +17,7 @@ configViewEngine(app)
 
 // routes config
 app.use('/', webRoutes);
+app.use('/v1/api', apiRoutes);
 
 (async () => {
   try {

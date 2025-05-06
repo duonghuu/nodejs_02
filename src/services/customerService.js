@@ -1,7 +1,7 @@
-const Custommer = require("../models/customer");
+const Customer = require("../models/customer");
 const createCustomerService = async (formData) => {
     try {
-        let result = await Custommer.create({
+        let result = await Customer.create({
             name: formData.name,
             address: formData.address,
             phone: formData.phone,
@@ -17,7 +17,7 @@ const createCustomerService = async (formData) => {
 
 const createArrayCustomerService = async (arrData) => {
     try {
-        let result = await Custommer.insertMany(arrData);
+        let result = await Customer.insertMany(arrData);
         return result;
     } catch (error) {
         return null;
@@ -26,7 +26,7 @@ const createArrayCustomerService = async (arrData) => {
 
 const getAllCustomerService = async () => {
     try {
-        let result = await Custommer.find({});
+        let result = await Customer.find({});
         return result;
     } catch (error) {
         return null;
@@ -35,7 +35,16 @@ const getAllCustomerService = async () => {
 
 const updateCustomerById = async (id, name, email, city) => {
     try {
-        const result = await Custommer.updateOne({ _id: id }, { name, email, city });
+        const result = await Customer.updateOne({ _id: id }, { name, email, city });
+        return result;
+    } catch (error) {
+        return null;
+    }
+};
+
+const deleteACustomerById = async (id) => {
+    try {
+        const result = await Customer.deleteById(id);
         return result;
     } catch (error) {
         return null;
@@ -46,5 +55,6 @@ module.exports = {
     createCustomerService,
     createArrayCustomerService,
     getAllCustomerService,
-    updateCustomerById
+    updateCustomerById,
+    deleteACustomerById
 }

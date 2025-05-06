@@ -1,4 +1,4 @@
-const { createCustomerService, createArrayCustomerService, getAllCustomerService, updateCustomerById, deleteACustomerById } = require("../services/customerService");
+const { createCustomerService, createArrayCustomerService, getAllCustomerService, updateCustomerById, deleteACustomerById, deleteCustomersByIds } = require("../services/customerService");
 const { uploadSingleFile } = require("../services/fileService");
 
 
@@ -92,5 +92,21 @@ module.exports = {
                 errorMessage: "Error"
             });
         }
-    }
+    },
+    deleteArrayCustomerAPI: async (req, res) => {
+        // console.log('deleteArrayCustomerAPI',req.body.customersId);
+        //[ '68189b9b440cf452644553b5', '68189b9b440cf452644553b6' ]
+        let customers = await deleteCustomersByIds(req.body.customersId);
+        if (customers) {
+            return res.status(200).json({
+                errorCode: 0,
+                data: customers
+            })
+        } else {
+            return res.status(500).json({
+                errorCode: 1,
+                errorMessage: "Error"
+            })
+        }
+    },
 }

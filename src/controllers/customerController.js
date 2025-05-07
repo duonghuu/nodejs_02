@@ -1,7 +1,6 @@
 const { createCustomerService, createArrayCustomerService, getAllCustomerService, updateCustomerById, deleteACustomerById, deleteCustomersByIds } = require("../services/customerService");
 const { uploadSingleFile } = require("../services/fileService");
 
-
 module.exports = {
     postCreateCustomerAPI: async (req, res) => {
         let {name, address, phone, email, description} = req.body;
@@ -51,11 +50,27 @@ module.exports = {
         }
     },
     getCustomerAPI: async (req, res) => {
+        // const query = aqp(
+        //     req.query, {
+        //         skipKey: 'page'
+        //     }
+        // );
         let limit = req.query.limit;
         let page = req.query.page;
+        // let name = query.name ?? null;
+        // let email = query.email ?? null;
+        // let filterArr = [];
+        // console.log('query.filter', query.filter);
+        // console.log('query', query);
+        // if (name) {
+        //     filterArr.push({ "name": { $regex: '.*' + name + '.*' }});
+        // }
+        // if (email) {
+        //     filterArr.push({ "email": { $regex: '.*' + email + '.*' }});
+        // }
         let customers = null;
         if (limit && page) {
-            customers = await getAllCustomerService(limit, page);
+            customers = await getAllCustomerService(limit, page, req.query);
         } else {
             customers = await getAllCustomerService();
         }

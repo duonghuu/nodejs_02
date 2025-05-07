@@ -24,9 +24,15 @@ const createArrayCustomerService = async (arrData) => {
     }
 }
 
-const getAllCustomerService = async () => {
+const getAllCustomerService = async (limit, page) => {
     try {
-        let result = await Customer.find({});
+        let result = null;
+        let skip = (page - 1) * limit;
+        if (limit && page) {
+            result = await Customer.find({}).limit(limit).skip(skip).exec();
+        } else {
+            result = await Customer.find({});
+        }
         return result;
     } catch (error) {
         return null;

@@ -26,7 +26,7 @@ app.use('/v1/api', apiRoutes);
 
 (async () => {
   try {
-    // await connection();
+    await connection();
     // Connection URL
     const url = process.env.DB_HOST_WITH_DRIVER;
     const client = new MongoClient(url);

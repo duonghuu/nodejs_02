@@ -28,15 +28,15 @@ app.use('/v1/api', apiRoutes);
   try {
     await connection();
     // Connection URL
-    const url = process.env.DB_HOST_WITH_DRIVER;
-    const client = new MongoClient(url);
-    const dbName = process.env.DB_NAME;
+    // const url = process.env.DB_HOST_WITH_DRIVER;
+    // const client = new MongoClient(url);
+    // const dbName = process.env.DB_NAME;
 
     // Use connect method to connect to the server
-    await client.connect();
-    console.log('Connected successfully to server');
-    const db = client.db(dbName);
-    const collection = db.collection('documents');
+    // await client.connect();
+    // console.log('Connected successfully to server');
+    // const db = client.db(dbName);
+    // const collection = db.collection('documents');
 
     app.listen(port, process.env.HOST_NAME, () => {
       console.log(`Backend app listening on port ${port}`)

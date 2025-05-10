@@ -1,5 +1,7 @@
 const { default: mongoose, Schema } = require("mongoose");
 var mongoose_delete = require('mongoose-delete');
+const User = require("./user");
+const Task = require("./task");
 
 const customerSchema = new mongoose.Schema({
     name: String,
@@ -17,9 +19,9 @@ const projectSchema = new mongoose.Schema({
     startDate: String,
     endDate: String,
     customerInfo: customerSchema,
-    usersInfo: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    usersInfo: [{ type: Schema.Types.ObjectId, ref: User }],
     leader: userSchema,
-    tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
+    tasks: [{ type: Schema.Types.ObjectId, ref: Task }]
 }, {timestamps: true});
 
 projectSchema.plugin(mongoose_delete, {overrideMethods: 'all'});

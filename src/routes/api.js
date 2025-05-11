@@ -9,7 +9,7 @@ const {
     postUploadMultipleFilesAPI
 } = require("../controllers/apiController");
 const { postCreateCustomerAPI, postCreateArrayCustomerAPI, getCustomerAPI, putUpdateCustomerAPI, deleteCustomerAPI, deleteArrayCustomerAPI } = require("../controllers/customerController");
-const { postCreateEmptyProjectAPI, getProjectsAPI } = require("../controllers/projectController");
+const { postCreateEmptyProjectAPI, getProjectsAPI, deleteProjectAPI, putUpdateProjectAPI } = require("../controllers/projectController");
 
 routerAPI.get("/users", getUsersAPI);
 routerAPI.post("/users", postCreateUserAPI);
@@ -28,5 +28,7 @@ routerAPI.delete("/customers-many", deleteArrayCustomerAPI);
 
 routerAPI.post("/projects", postCreateEmptyProjectAPI);
 routerAPI.get("/projects", getProjectsAPI);
+routerAPI.delete("/projects", deleteProjectAPI);
+routerAPI.put("/projects", putUpdateProjectAPI);
 
 module.exports = routerAPI;

@@ -23,6 +23,14 @@ const createEmptyCustomerService = async (objData) => {
             let result = await myProject.save();
             return result;
         }
+        if (objData.type === "ADD-TASKS") {
+            let myProject = await Project.findById(objData.projectId).exec();
+            for (let i = 0; i < objData.tasksArr.length; i++) {
+                myProject.tasks.push(objData.tasksArr[i]);
+            }
+            let result = await myProject.save();
+            return result;
+        }
         return null
     } catch (error) {
         return null;

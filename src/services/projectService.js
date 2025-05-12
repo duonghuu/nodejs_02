@@ -60,7 +60,6 @@ const deleteAProjectById = async (id) => {
     }
 };
 
-
 const updateProjectById = async (id, name, startDate, endDate, description) => {
     try {
         const updateDate = {};
